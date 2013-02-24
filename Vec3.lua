@@ -229,6 +229,34 @@ Vec3 =
          return Vec3.new(v.y*uz - v.z*uy, v.z*ux - v.x*uz, v.x*uy - v.y*ux)
       end,
 
+      --- Rotates this (the first) vector around the second vector by the
+       -- given angle.
+       --
+       -- Call with one of:
+       --    vec:rot_around(axis, angle)
+       --    Vec3.rot_around(vec, axis, angle)
+       --
+       -- @param axis
+       --    The axis about which to rotate.
+       -- @param angle
+       --    The angle by which to rotate this vector, in radians.
+       -- @return
+       --    a new Vec3 with the result of the operation.
+      rot_around = function(v, axis, angle)
+         local uaxis = Vec3.new_copy(axis):unit()
+
+         local alen = uaxis:dotvec(v)
+         local avec = uaxis:mul(alen)
+
+         local pvec = Vec3.subvec(v, avec)
+         local rvec = uaxis:crossvec(v)
+
+         local v1 = pvec:mul(math.cos(angle))
+         local v2 = rvec:mul(math.sin(angle))
+
+         return avec:addvec(v1):addvec(v2)
+      end,
+
       --- Adds two Vec3s. Optimized for pure Vec3/table operations by removing
        -- type checking and conditionals.  If called with Vec3-likes table(s),
        -- ensure all expected components "x", "y", and "z" exist.
