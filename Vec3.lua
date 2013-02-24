@@ -316,11 +316,18 @@ Vec3 =
 Vec3_obj_meta.__index = Vec3
 Vec3_obj_meta.__add = Vec3.addvec
 Vec3_obj_meta.__sub = Vec3.subvec
-Vec3_obj_meta.__mul = Vec3.mul
 Vec3_obj_meta.__div = Vec3.div
 Vec3_obj_meta.__unm = Vec3.unm
 Vec3_obj_meta.__eq = Vec3.eq
 Vec3_obj_meta.__tostring = Vec3.tostring
+
+Vec3_obj_meta.__mul = function(a, b)
+   if type(a) == "table" then
+      return Vec3.mul(a, b)
+   else
+      return Vec3.mul(b, a)
+   end
+end
 
 setmetatable(
    Vec3,

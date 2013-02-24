@@ -1,7 +1,6 @@
 dofile("Vec3.lua")
 
--- DEBUG
--- local v1, v2, v3
+local v1, v2, v3
 
 -- Constructors
 
@@ -109,6 +108,20 @@ assert(10.0 == v2.y)
 assert(15.0 == v2.z)
 assert(math.sqrt(25.0*v1:len_sq() - v2:len_sq()) < 0.001)
 assert(math.sqrt(5.0*v1:len() - v2:len()) < 0.001)
+
+v2 = v1 * 7.0
+assert(7.0 == v2.x)
+assert(14.0 == v2.y)
+assert(21.0 == v2.z)
+assert(math.sqrt(49.0*v1:len_sq() - v2:len_sq()) < 0.001)
+assert(math.sqrt(7.0*v1:len() - v2:len()) < 0.001)
+
+v2 = 11.0 * v1
+assert(11.0 == v2.x)
+assert(22.0 == v2.y)
+assert(33.0 == v2.z)
+assert(math.sqrt(121.0*v1:len_sq() - v2:len_sq()) < 0.001)
+assert(math.sqrt(11.0*v1:len() - v2:len()) < 0.001)
 
 -- Division
 
