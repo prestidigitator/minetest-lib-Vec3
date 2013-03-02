@@ -71,7 +71,7 @@ end
  --    vec:len_sq()
  --    Vec3.len_sq(vec)
  --
- -- @return A number
+ -- @return a number
 local function Vec3_len_sq(v)
    return v.x^2 + v.y^2 + v.z^2
 end
@@ -83,7 +83,7 @@ Vec3.len_sq = Vec3_len_sq
  --    vec:len()
  --    Vec3.len(vec)
  --
- -- @return A number
+ -- @return a number
 local function Vec3_len(v)
    return math.sqrt(v.x^2 + v.y^2 + v.z^2)
 end
@@ -96,7 +96,7 @@ Vec3.len = Vec3_len
  --    vec:unit()
  --    Vec3.unit(vec)
  --
- -- @return A new Vec3 with length 1.0
+ -- @return a new Vec3 with length 1.0
 local function Vec3_unit(v)
    local len = math.sqrt(v.x^2 + v.y^2 + v.z^2)
    return Vec3.new(v.x/len, v.y/len, v.z/len)
@@ -376,6 +376,11 @@ end
 Vec3.crossvec = Vec3_crossvec
 
 --- Converts Vec3 to a string with format "(x,y,z)".
+ --
+ -- Call with one of:
+ --    vec:tostring()
+ --    Vec3.tostring(vec)
+ --    tostring(vec)
  --
  -- @return a string
 local function Vec3_tostring(v)
