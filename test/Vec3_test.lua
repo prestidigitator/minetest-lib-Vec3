@@ -1,4 +1,4 @@
-dofile("Vec3.lua")
+local Vec3 = dofile("Vec3_1-0.lua")
 
 local v1, v2, v3
 
@@ -290,4 +290,4 @@ assert(v3:sub({ 0.0, 0.0, 1.0 }):len_sq() < 0.001)
 v3 = v3:rot_around(v2, 2.0*math.pi/3.0)
 assert(v3:sub(v1):len_sq() < 0.001)
 
-print("Vec3 unit test PASSED")
+print("Vec3 tests PASSED")
